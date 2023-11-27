@@ -1,0 +1,89 @@
+{% extends "donation/base/base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<link type="text/css" rel="stylesheet" href="{% static 'donation/css/causes.css' %}">
+
+
+<div class="body-content mt-5 mb-5">
+    <div class="heading text-center">
+        <h2 class="causes-header-one">Pick A Cause</h2>
+    </div>
+
+    <div class="container">
+        <div class="spacer pt-5">
+
+        </div>
+
+        <!-- Paginate in rows of 3 -->
+        {% for obj in page_obj %}
+            <div class="row justify-content-center">
+                {% for key, value in dataDictionary.items %}
+                    {% if value.cause.id ==  obj.0.id %}
+                        <div class="col-lg-3 col-12 mr-4 ml-4 pt-4 pb-4 mt-5 mb-5 causes-image-case">
+                            <!-- Get the image here; value.img.image -->
+                            <a href="{% url 'cause' pk=key %}">
+                                <img class="causes-gallery-img"
+                                     src="../media/{{ value.img.image }}" alt="cause image" width="100%" height="100%">
+                            </a>
+
+                        </div>
+
+                    {% elif value.cause.id ==  obj.1.id %}
+                        <div class="col-lg-3 col-12 mr-4 ml-4 pt-4 pb-4 mt-5 mb-5 causes-image-case">
+                            <!-- Get the image here; value.img.image -->
+                            <a href="{% url 'cause' pk=key %}">
+                                <img class="causes-gallery-img"
+                                     src="../media/{{ value.img.image }}" alt="cause image" width="100%" height="100%">
+                            </a>
+                        </div>
+
+                    {% elif value.cause.id ==  obj.2.id %}
+                        <div class="col-lg-3 col-12 mr-4 ml-4 pt-4 pb-4 mt-5 mb-5 causes-image-case">
+                            <!-- Get the image here; value.img.image -->
+                            <a href="{% url 'cause' pk=key %}">
+                                <img class="causes-gallery-img"
+                                     src="../media/{{ value.img.image }}" alt="cause image" width="100%" height="100%">
+                            </a>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        {% endfor %}
+
+        <div class="row justify-content-center pt-3 pb-1">
+            <div class="col-lg-12 pt-2" >
+                <div class="pagination justify-content-center">
+                    <span class="step-links">
+                        {% if page_obj.has_previous %}
+                            <a id="paginate_btn5" class="btn btn-outline-info btn-sm" href="?page=1">&laquo; FIRST</a>
+                            <a id="paginate_btn1" class="paginate_btn btn btn-outline-info btn-sm"
+                            href="?page={{ page_obj.previous_page_number }}">PREVIOUS</a>
+                        {% else %}
+                            <a id="paginate_btn6" class="btn btn-outline-link btn-sm disabled" href="?page=1">FIRST</a>
+                        {% endif %}
+
+                        {% for num in page_obj.paginator.page_range %}
+                            {% if page_obj.number == num %}
+                                <a id="paginate_btn2" class="paginate_btn btn btn-info btn-sm " href="?page={{ num }}">
+                                    {{ num }}
+                                </a>
+                            {% endif %}
+                        {% endfor %}
+
+                        {% if page_obj.has_next %}
+                            <a id="paginate_btn4" class="btn btn-outline-info  btn-sm" href="?page={{ page_obj.next_page_number }}">NEXT</a>
+                            <a id="paginate_btn7" class="btn btn-outline-info  btn-sm" href="?page={{ page_obj.paginator.num_pages }}">LAST &raquo;</a>
+                        {% else %}
+                            <a id="paginate_btn8" class="btn btn-outline-link  btn-sm disabled" href="?page={{ page_obj.paginator.num_pages }}">LAST</a>
+                        {% endif %}
+                    </span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,175 @@
+{# this is some other template that you want to display #}
+{% extends "donation/base/base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+
+<!-- If the user is already authenticated, redirect them to home -->
+{% if user.is_authenticated %}
+    <meta http-equiv="REFRESH" content="0;url=/">
+{% endif %}
+
+<div class="container-fluid register-container pb-5 mr-auto ml-auto"
+     style="background: url({% static 'donation/img/sign-up.jpg' %}) no-repeat center center; font-weight: bold;">
+    <div class="spacer pt-md-5 ">
+
+    </div>
+    <div class="row register-row">
+        <div class="col-lg-6 col-12">
+
+        </div>
+
+        <div class="col-lg-4 col-12 pl-lg-4 pr-lg-4 pt-lg-5 mt-auto mb-auto" style="border-radius: 5px;">
+            <div class="row mt-3">
+                <div class="col-12 text-center">
+                    <h2 style="font-family: Haettenschweiler; font-size: 100px;
+                               text-shadow: 0px 3px 6px rgba(0, 0, 0, 0.25);">
+                        SIMPLY DONATE
+                    </h2>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h3 style="font-family: Haettenschweiler; font-size: 40px;
+                               text-shadow: 0px 3px 6px rgba(0, 0, 0, 0.15);">Build a better world!</h3>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12 text-center">
+                    <img src="{% static 'donation/img/simply-donate-footer-logo.png' %}" width="100" alt="donation logo">
+                </div>
+            </div>
+
+            <form id="registerForm" method="POST" class="form-validate pt-lg-5 pt-3 pb-3"
+                  enctype="multipart/form-data" autocomplete="off">
+                {% csrf_token %}
+
+                {{ form.username|as_crispy_field }}
+
+                <div class="form-row">
+                    <div class="col-md-6">
+                        {{ form.email|as_crispy_field }}
+                    </div>
+
+                    <div class="col-md-6">
+                        {{ form.phone|as_crispy_field }}
+                    </div>
+                </div>
+
+
+                {{ form.password1|as_crispy_field }}
+                <div id="password1-info" class="pb-4" style="font-size: 11px;">
+                    Note: password should contain; numbers and letters. Minimum password length > 10 characters!
+                </div>
+
+                {{ form.password2|as_crispy_field }}
+
+                {{ form.show|as_crispy_field }}
+
+                <div class="agreement mt-5 mb-2 text-center mx-auto">
+                    <input id="user-agreement" type="checkbox" name="agreement" class="user-agreement-checkbox">
+                    <label id="agreement-label" for="user-agreement">Do you agree to abide by our
+                        <a style="color: limegreen;" href="#">
+                            terms of service?
+                        </a>
+                    </label>
+
+                </div>
+
+                <div class="form-group text-center">
+                    <button class="btn sign-up-button" type="submit">SignUp</button>
+                </div>
+            </form>
+
+
+        </div>
+
+        <div class="col">
+
+        </div>
+
+    </div>
+</div>
+
+<script type="text/javascript">
+    // Toggle for showing passwords.
+        let show = document.getElementById('id_show');
+
+        show.addEventListener('click', showPasswordFunction);
+
+        // Function to toggle and show the password.
+        function showPasswordFunction(event) {
+          var x = document.getElementById("id_password1");
+
+          if (x.type === "password") {
+            x.type = "text";
+          } else {
+            x.type = "password";
+          }
+
+          var y = document.getElementById("id_password2");
+
+          if (y.type === "password") {
+            y.type = "text";
+          } else {
+            y.type = "password";
+          }
+        }
+
+        function checkAccept(){
+                if (document.getElementById('user-agreement').checked){
+                    console.log('yes')
+                    return true
+                }
+            }
+
+            let registerForm = document.getElementById("registerForm");
+
+            registerForm.addEventListener("submit", (e) => {
+                e.preventDefault();
+
+                if (checkAccept()){
+                    // handle submit
+                    registerForm.submit();
+
+                } else {
+                    let agreementLabel = document.getElementById("agreement-label");
+
+                    agreementLabel.style.color = "red";
+                }
+            });
+
+         const password_one = document.getElementById("id_password1")
+
+         password_one.addEventListener('input', checkPasswordOne);
+
+         var regularExpression = /^(?=.*[a-zA-Z])(?=.*[0-9]).+$/;
+
+         function checkPasswordOne(){
+            let password1 = document.getElementById("id_password1").value;
+
+            var valid1 = regularExpression.test(password1);
+
+            let password_one_true = document.getElementById("password1-info")
+
+            if (valid1 == true){
+                if (password1.length > 10) {
+                    console.log(password1.length);
+                    password_one_true.style.color = "green";
+
+                } else {
+                    password_one_true.style.color = "red";
+                }
+
+            } else {
+                password_one_true.style.color = "red";
+            }
+
+            console.log(password1)
+            console.log(valid1)
+         }
+</script>
+
+{% endblock %}

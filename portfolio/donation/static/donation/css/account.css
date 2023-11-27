@@ -1,0 +1,40 @@
+@font-face {
+    font-family: "Goudy";
+    src: url("./public/fonts/OPTIwtcGoudy-Medium.ttf.woff")
+    format("woff");
+}
+
+.account-balance-one, .account-balance-two, .account-login, .account-welcome {
+    font-family: "Goudy", sans-serif;
+}
+
+.account-welcome {
+    font-size: 30px;
+}
+
+.account-login {
+    font-size: 20px;
+}
+
+.account-balance-one {
+    color: red;
+    font-size: 20px;
+}
+
+.account-balance-two {
+    color: green;
+    font-size: 20px;
+}
+
+.account-box-one, .account-box-two, .account-box-three {
+    box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
+    border-radius: 25px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.account-box-one-text, .account-box-two-text, .account-box-three-text {
+    color: #4B4846FF;
+    font-weight: bold;
+    font-size: 30px;
+}

@@ -1,0 +1,67 @@
+{% load static %}
+
+<header>
+    <!--Top of page button-->
+    <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fa fa-arrow-up"></i><span class="sr-only">Top</span></button>
+
+    <div class="navigator">
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg sticky-top" style="box-shadow: none;">
+            <div class="container">
+                <a class="navbar-brand logo" href="{% url 'index' %}">
+                    <!-- Logo Image -->
+                    <img src="{% static 'donation/img/simply-donate-logo.jpg' %}" width="100" height="100" alt="donation logo">
+                </a>
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-7"
+                    aria-controls="navbarSupportedContent-7" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                    <i class="fa fa-align-justify navbar-icon" aria-hidden="true"></i>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent-7">
+                  <ul class="navbar-nav container-fluid justify-content-center">
+                    <li class="nav-item active mr-2 ml-2 pt-lg-2">
+                      <a class="nav-link movingBrackets square-brackets" href="{% url 'index' %}">
+                          Home
+                      </a>
+                    </li>
+
+                    <li class="nav-item active mr-2 ml-2 pt-lg-2">
+                      <a class="nav-link movingBrackets square-brackets" href="{% url 'cause' %}">Donate</a>
+                    </li>
+
+                    <li class="nav-item active mr-2 ml-2 pt-lg-2">
+                      <a class="nav-link movingBrackets square-brackets" href="{% url 'about_us' %}">About Us</a>
+                    </li>
+
+                    <li class="nav-item active mr-2 ml-2 pt-lg-2">
+                      <a class="nav-link movingBrackets square-brackets" href="{% url 'contact_us' %}">Contact Us</a>
+                    </li>
+
+                      {% if user.is_authenticated %}
+                        <li class="list-inline-item">
+                            <!-- For sizes less than my pc, margin left should be zero instead of 5 -->
+                            <a href="{% url 'account' %}" class="btn border mt-2 ml-md ml-lg-5 custom-nav-button-1">
+                                My Account
+                            </a>
+                        </li>
+                      <li class="list-inline-item">
+                            <a href="{% url 'logout' %}" class="btn border mt-2 custom-nav-button-2">LogOut</a>
+                        </li>
+                      {% else %}
+                        <li class="list-inline-item">
+                    <a href="{% url 'login' %}" class="btn border mr-2 ml-3 custom-nav-button-1">Log In!</a>
+                </li>
+                      <li class="list-inline-item" >
+                            <a href="{% url 'register' %}" class="btn border mr-2 ml-3 custom-nav-button-2">Sign Up!</a>
+                        </li>
+                      {% endif %}
+
+                  </ul>
+                </div>
+          </div>
+        </nav>
+        <!-- Navbar -->
+    </div>
+</header>

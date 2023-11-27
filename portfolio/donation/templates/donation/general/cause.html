@@ -1,0 +1,262 @@
+{% extends "donation/base/base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<link type="text/css" rel="stylesheet" href="{% static 'donation/css/cause.css' %}">
+
+<div class="body-content mt-5 pt-5 mb-5 pb-5">
+    <div class="container cause-container">
+        <div class="spacer pt-lg-5 mt-lg-5">
+
+        </div>
+
+        <div class="row pl-lg-5 pr-lg-5 pb-5">
+            <div class="col-lg-6 col-12">
+                <div id="myCarousel-{{ cause.id }}" class="myCarousel carousel slide">
+                    <!-- main slider carousel items -->
+                    <!--Loop thrice with 3-loop-->
+                    <!--Check if first image is lead before start setting stuff-->
+                    <div class="carousel-inner">
+                        {% for imgId, imgItems in images.items %}
+                            {% if imgId == 0 %}
+                                <div class="active carousel-item text-center" data-slide-number="{{ imgId }}">
+                                    <img src="{{ imgItems }}" class="cause-img-one">
+                                </div>
+                            {% else %}
+                                <div class="carousel-item text-center" data-slide-number="{{ imgId }}">
+                                    <img src="{{ imgItems }}" class="cause-img-one">
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+
+                    </div>
+
+                    <!-- main slider carousel nav controls -->
+                    <ul class="carousel-indicators list-inline mx-auto px-2" style="margin-top: 30px;">
+                        {% for imgId, imgItems in images.items %}
+                            {% if imgId == 0 %}
+                                <li class="list-inline-item active bottom-carousel">
+                                    <a class="selected" data-slide-to="{{ imgId }}" data-target="#myCarousel-{{ cause.id }}">
+                                        <img src="{{ imgItems }}" class="cause-img-two">
+                                    </a>
+                                </li>
+                            {% else %}
+                                {% if imgId > 2 %}
+                                    <li class="list-inline-item bottom-carousel" style="display: none;">
+                                        <a class="selected" data-slide-to="{{ imgId }}" data-target="#myCarousel-{{ cause.id }}">
+                                            <img src="{{ imgItems }}" class="cause-img-two">
+                                        </a>
+                                    </li>
+                                {% else %}
+                                    <li class="list-inline-item bottom-carousel">
+                                        <a class="selected" data-slide-to="{{ imgId }}" data-target="#myCarousel-{{ cause.id }}">
+                                            <img src="{{ imgItems }}" class="cause-img-two">
+                                        </a>
+                                    </li>
+                                {% endif %}
+
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-lg-6 col-12 pt-5 pb-5">
+                <div class="spacer pt-5">
+
+                </div>
+
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <h2 class="cause-title">{{ cause.title }}</h2>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <h3 class="cause-description">Description</h3>
+                    </div>
+                </div>
+
+                <div class="row" id="id_new">
+                    <div class="col-12 text-center">
+                        <p class="cause-description-text">{{ cause.description }}</p>
+                    </div>
+                </div>
+
+                {% if cause.donation_type == 'kind' %}
+                    <div class="row pt-5 pb-3">
+                        <div class="col-12 text-center">
+                            <a class="btn donation-button donation-button-1 cause-button-one"
+                               href="{% url 'cause' pk=cause.id d_type='kind' %}">
+                                    Kind
+                            </a>
+                        </div>
+                    </div>
+
+                {% elif cause.donation_type == 'gift' %}
+                    <div class="row pt-5 pb-3">
+                        <div class="col-12 text-center">
+                            <a class="btn donation-button donation-button-2 cause-button-two"
+                               href="{% url 'cause' pk=cause.id d_type='gift' %}">
+                                    Gift
+                            </a>
+                        </div>
+                    </div>
+
+                {% elif cause.donation_type == 'both' %}
+                    <div class="row pt-5 pb-3">
+                        <div class="col-lg-6 col-12 text-center mt-2">
+                            <a class="btn donation-button donation-button-1 cause-button-one"
+                               href="{% url 'cause' pk=cause.id d_type='kind' %}">
+                                Kind
+                            </a>
+                        </div>
+
+                        <div class="col-lg-6 col-12 text-center mt-2">
+                            <a class="btn donation-button donation-button-2 cause-button-two"
+                               href="{% url 'cause' pk=cause.id d_type='gift' %}">
+                                Gift
+                            </a>
+                        </div>
+                    </div>
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    // Get all the list-inline-item.
+    var list = document.querySelectorAll('.bottom-carousel');
+
+    // document.getElementById("id").style.display = "none";
+    // document.getElementById("id").style.display = "block";
+
+    console.log(list);
+    console.log(list.length);
+    //console.log(list[0]);
+
+    // Start the counter from zero since each list begins from zero.
+    var counter = 0;
+
+    // Active position variable.
+    var activePos = 0;
+
+    for (const eachElement of list) {
+            // we could add an event listener to every eachElement.
+            eachElement.addEventListener('click', displayChange);
+
+            // Increment counter.
+            counter++;
+        };
+
+    // Display change function.
+    function displayChange(event){
+        // Arrays to store the elements to display or not.
+        let displayArray = [];
+
+        let unDisplayArray = [];
+
+        console.log(event);
+        // Reassign counter to 0.
+        counter = 0;
+
+        $(document).ready(function () {
+            var newList = document.querySelectorAll('.bottom-carousel');
+
+            console.log('new list');
+
+            console.log(newList);
+
+            for (const eachElement of newList) {
+                console.log(eachElement.className);
+                if (eachElement.className == 'list-inline-item bottom-carousel active') {
+                    console.log('active found');
+                    console.log(eachElement);
+
+                    // Set active position to the counter.
+                    activePos = counter;
+
+                    break;
+                };
+
+                // Increment counter.
+                counter++;
+            };
+
+            // Reassign counter to 0.
+            counter = 0;
+
+            for (const eachElement of newList) {
+                console.log('active position');
+                console.log(activePos);
+                if (activePos == 0) {
+
+                    if (counter == activePos){
+                        displayArray.push(eachElement);
+
+                    } else if (counter == activePos + 1){
+                        displayArray.push(eachElement);
+
+                    } else if (counter == activePos + 2){
+                        displayArray.push(eachElement);
+
+                    } else {
+                        unDisplayArray.push(eachElement);
+                    };
+
+                } else if (activePos == list.length - 1) {
+                    // We use list.length - 1 since, we start at 0 and end at list.length - 1.
+                    if (counter == activePos){
+                        displayArray.push(eachElement);
+
+                    } else if (counter == activePos - 1){
+                        displayArray.push(eachElement);
+
+                    } else if (counter == activePos - 2){
+                        displayArray.push(eachElement);
+
+                    } else {
+                        unDisplayArray.push(eachElement);
+                    };
+
+                } else {
+                    if (counter == activePos){
+                        displayArray.push(eachElement);
+
+                    } else if (counter == activePos - 1){
+                        displayArray.push(eachElement);
+
+                    } else if (counter == activePos + 1){
+                        displayArray.push(eachElement);
+
+                    } else {
+                        unDisplayArray.push(eachElement);
+                    };
+                }
+
+                // Increment counter.
+                counter++;
+            };
+
+            // Loop through the display and unDisplay arrays and do the needed.
+            for (let i=0; i < displayArray.length; i++) {
+                // Display.
+                displayArray[i].style.display = 'block';
+            };
+
+            for (let i=0; i < unDisplayArray.length; i++) {
+                // Display.
+                unDisplayArray[i].style.display = 'none';
+            };
+
+        });
+    };
+
+    console.log(counter);
+</script>
+
+{% endblock %}

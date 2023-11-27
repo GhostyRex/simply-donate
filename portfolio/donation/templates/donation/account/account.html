@@ -1,0 +1,241 @@
+{% extends "donation/base/base.html" %}
+{% load static %}
+{% block content %}
+
+<link type="text/css" rel="stylesheet" href="{% static 'donation/css/account.css' %}">
+
+<script type="text/javascript">
+    wow = new WOW({
+        boxClass: 'wow', // default
+        animateClass: 'animated', // default
+        offset: 0, // default
+        mobile: true, // default
+        live: true // default
+    })
+    wow.init();
+</script>
+<!--Top of page button-->
+
+    <button onclick="topFunction()" id="myBtn" title="Go to top">
+    <i class="fa fa-arrow-up"></i><span class="sr-only">Top</span>
+    </button>
+
+    <div class="wrapper">
+        <!-- Sidebar Holder -->
+        <nav id="sidebar">
+            <div class="transbox sidebar-header d-flex justify-content-center">
+                <img src="{% static 'donation/img/simply-donate-contact-us.png' %}" width="100" alt="simply donate logo">
+            </div>
+
+            <ul class="list-unstyled components">
+                <li class="sidebar-nav">
+                    <!-- General could include stats on current user's profile -->
+                    <a href="{% url 'account' %}"><i class="fa fa-folder mr-3" aria-hidden="true"></i>General</a>
+                </li>
+
+                <li class="sidebar-nav">
+                    <!-- General could include stats on current user's profile -->
+                    <a href="{% url 'account' %}"><i class="fa-solid fa-hand-holding-dollar mr-3"></i>Donate</a>
+                </li>
+
+                <li class="sidebar-nav">
+                    <!-- General could include stats on current user's profile -->
+                    <a href="{% url 'account' %}"><i class="fa-solid fa-gift mr-3"></i>Gift</a>
+                </li>
+
+                <li class="sidebar-nav">
+                    <!-- General could include stats on current user's profile -->
+                    <a href="{% url 'account' %}"><i class="fa-solid fa-book mr-3"></i>Transactions</a>
+                </li>
+
+                <li class="sidebar-nav">
+                    <a href="{% url 'account' %}"><i class="fa fa-lock mr-3"></i>Change Password</a>
+                </li>
+
+                <li class="sidebar-nav">
+                    <a href="{% url 'account' %}"><i class="fa fa-user-circle mr-3" aria-hidden="true"></i>Update Profile</a>
+                </li>
+            </ul>
+
+            <ul class="list-unstyled CTAs">
+                <li>
+                    <a href="{% url 'index' %}" class="download">Home</a>
+                </li>
+                <li>
+                    <a href="{% url 'logout' %}" class="article">Logout</a>
+                </li>
+            </ul>
+
+            <h3 class="text-center" style="font-size: 14px;">Last Login:</h3>
+            <h3 class="text-center" style="font-size: 14px;">{{ user.last_login }}</h3>
+            <h3 class="text-center mt-5" style="font-size: 14px;">AFFORDABLE FUNERAL ADIEU USA. INC.</h3>
+            <h3 class="text-center" style="font-size: 14px;">&copy; copyright {% now "Y" %}</h3>
+        </nav>
+
+        <!-- Page Content Holder -->
+        <div id="content">
+            <nav class="navbar navbar-expand-lg bg-transparent">
+                <div class="container-fluid">
+                    <button type="button" id="sidebarCollapse" class="navbar-btn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+
+                    <div id="dashboard" class="px-4 dashboard-text">MY DASHBOARD</div>
+
+                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button"
+                            data-toggle="collapse" data-target="#navbarSupportedContent"
+                            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fa fa-align-justify"></i>
+                    </button>
+
+                    <div class="upperNavBar collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a class="nav-link movingBrackets square-brackets pr-3" href="{% url 'index' %}">HOME</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link movingBrackets square-brackets pr-3" href="{% url 'logout' %}">LOGOUT</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="container-fluid">
+                <h3 class="text-center account-welcome">Welcome to Your Account: {{ user.username.upper}}</h3>
+                <h3 class="text-center account-login">Last Login: {{ user.last_login }}</h3>
+                {% if balance == 0 %}
+                    <p class="text-center account-balance-one">Balance:
+                        <span style="font-weight: bold;">$0</span>
+                    </p>
+                {% else %}
+                    <p class="text-center account-balance-two">Balance:
+                        <span style="font-weight: bold;">${{ balance }}</span>
+
+                    </p>
+                {% endif %}
+
+                {% if added %}
+                    <div class="account-alert alert alert-success alert-dismissible text-center wow fadeInDown"
+                         data-wow-delay="0.5s">
+                        <strong>Balance + </strong> <span><i class="fas fa-dollar-sign"></i></span>{{ added }}.
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% endif %}
+
+                {% if escrow %}
+                    <div class="account-alert alert alert-success alert-dismissible text-center wow fadeInDown"
+                         data-wow-delay="0.5s">
+                        <p style="color: black;"><strong>Stripe Payment! </strong></p>
+
+                        {% for escrowData in escrow.data %}
+                            <p style="color: black;">
+                                You Just Made a Pay of ${{ escrowData.amount }} From Stripe For {{ escrowData.name }}.
+                            </p>
+                        {% endfor %}
+
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                {% elif paypal_success_escrow %}
+                    <div class="account-alert alert alert-success alert-dismissible text-center wow fadeInDown"
+                         data-wow-delay="0.5s">
+                        <p style="color: black;"><strong>Paypal Payment! </strong></p>
+
+                            <p style="color: black;">
+                                Paypal Transactions take from 0-2 mins to get verified.
+                            </p>
+
+                            <p style="color: black;">
+                                Check on your transactions for updates.
+                            </p>
+
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                {% elif paypal_cancelled_escrow %}
+                    <div class="account-alert alert alert-danger alert-dismissible text-center wow fadeInDown"
+                         data-wow-delay="0.5s">
+                        <p style="color: black;"><strong>Paypal Payment! </strong></p>
+
+                            <p style="color: black;">
+                                Paypal transaction was cancelled.
+                            </p>
+
+                            <p style="color: black;">
+                                Check on your transactions for updates.
+                            </p>
+
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% endif %}
+
+                <div class="row pt-4">
+                    <div class="col-lg-4 mt-5">
+                        <div class="pt-5 pb-5 account-box-one">
+                            <p class="text-center account-box-one-text">BOX 1</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 mt-5">
+                        <div class="pt-5 pb-5 account-box-two">
+                            <p class="text-center account-box-two-text">BOX 2</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 mt-5">
+                        <div class="pt-5 pb-5 account-box-three">
+                            <p class="text-center account-box-three-text">BOX 3</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+                $(this).toggleClass('active');
+            });
+
+            // show the alert
+            setTimeout(function() {
+                $(".account-alert").alert('close').fade;
+            }, 15000);
+
+            var dashboard = document.getElementById('dashboard').innerText;
+
+            // We have length of dashboard. the first character should have opacity of that length/half and the last
+            // length should have opacity of zero.
+            // As we loop, we add the opacity by a fixed value say 0.1. We keep looping until the opacity of all the
+            // characters is 1. That is, total opacity of the text should be 1.
+            // (say this is good until the last character's opacity is 1).
+            // Use a while loop if you want it constantly changing.
+
+            console.log(dashboard);
+            console.log(dashboard.length);
+        });
+    </script>
+{% endblock %}

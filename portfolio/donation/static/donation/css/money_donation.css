@@ -1,0 +1,30 @@
+.money-donation-cause-title {
+    font-family: "OPT", sans-serif;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.money-donation-form-cover {
+    border-radius: 26px;
+    border: none;
+    box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+}
+
+.money-donation-form {
+    font-family: "OPT", sans-serif;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.money-donation-image {
+    width: 156px; height: 156px;
+}
+
+.money-donation-button {
+    font-family: "Gabriola", sans-serif;
+    font-size: 30px;
+    text-transform: capitalize;
+    border-radius: 19px;
+    box-shadow: #374CD2 0px 10px 10px -10px;
+    width: 30%; border: none;
+}

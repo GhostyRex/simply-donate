@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+  <head>
+      <!-- Meta data tags -->
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+      <!-- upgrade all request from insecure to secure request -->
+      <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+
+      <!-- Title of application -->
+      <title>Simply Donate</title>
+
+      <!-- Favicon.ico on title for simply donate. -->
+      <link rel="shortcut icon" href="{% static 'donation/img/favicon.ico' %}">
+
+      <!-- Bootstrap core CSS -->
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+
+      <!-- Material Design Bootstrap -->
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.2/css/mdb.min.css" rel="stylesheet">
+
+      <!-- faq imports -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" type="text/css"/>
+
+      <link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow" rel="stylesheet">
+
+      {% if "account" not in request.path %}
+        <link type="text/css" rel="stylesheet" href="{% static 'donation/css/style.css' %}">
+
+      {% else %}
+        <link type="text/css" rel="stylesheet" href="{% static 'donation/css/dashboard.css' %}">
+
+      {% endif %}
+
+      <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+
+      <!-- faq imports end -->
+      <!-- SCRIPTS -->
+      <!-- JQuery -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+      <!--change jquery to latest version-->
+
+      <!--<script type="text/javascript" src="../../js/jquery-3.3.1.min.js"></script>-->
+      <!-- Tooltips -->
+      <!--<script type="text/javascript" src="../../js/popper.min.js"></script>-->
+      <!-- Bootstrap core JavaScript -->
+      <!--<script type="text/javascript" src="../../js/bootstrap.min.js"></script>-->
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+      <!-- Script for the scroll button back to top of page -->
+      <script type="text/javascript" src="{% static 'donation/js/top.js' %}"></script>
+
+      <!-- Wow starts-->
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/animatecss/3.5.2/animate.min.css">
+
+      <script type="text/javascript" src="{% static 'donation/js/wow.min.js' %}"></script>
+      <!-- Wow ends-->
+
+  </head>
+
+  <body>
+    {% if "account" not in request.path %}
+        {% include "donation/semantic/header.html" %}
+    {% endif %}
+
+    {% block content %}
+
+    {% endblock content %}
+    {% if "account" not in request.path %}
+        {% include "donation/semantic/footer.html" %}
+    {% endif %}
+  </body>
+</html>

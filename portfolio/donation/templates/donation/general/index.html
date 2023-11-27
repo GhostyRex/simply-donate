@@ -1,0 +1,240 @@
+{% extends "donation/base/base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<link type="text/css" rel="stylesheet" href="{% static 'donation/css/index.css' %}">
+
+<!-- content -->
+<div class="landing-page container mb-5">
+    <div class="row">
+        <div class="col-lg-6 col-12 mt-5 pt-3">
+            <div class="row mt-md-5 pt-md-4" >
+
+            </div>
+
+            <div class="row">
+                <div class="col-12 text-center">
+                    <div class="row ">
+                        <div class="col">
+
+                        </div>
+
+                        <div class="col-4 text-right">
+                            <img class="gift-donation" src="{% static 'donation/img/gift-donation.jpg' %}"
+                                 alt="a donation gift of foods">
+                        </div>
+
+                        <div class="col-3">
+                            <img class="coin-donation" src="{% static 'donation/img/coin-donation.jpg' %}"
+                                 alt="coins in a donation jar">
+
+                        </div>
+
+                        <div class="col">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <h1 class="text-center index-header">
+                        Simply Donate
+                    </h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <h2 class="text-center index-slogan">
+                        Building a better world through, donations!
+                    </h2>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col text-center mt-2">
+                    <a class="btn donation-button donation-button-1 index-button-1 text-center"
+                       href="{% url 'cause' %}">
+                        Donate
+                    </a>
+                </div>
+            </div>
+
+            <div class="row pt-5">
+                <div class="col">
+                    <div class="row">
+                        <div class="col">
+                            <h3 class="text-center index-landing-text-1">
+                                20
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <h3 class="text-center index-landing-text-2">
+                                CAUSES
+                            </h3>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col">
+                    <div class="row">
+                        <div class="col">
+                            <h3 class="text-center index-landing-text-1">
+                                $100K+
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <h3 class="text-center index-landing-text-2">
+                                DONATIONS
+                            </h3>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col">
+                    <div class="row">
+                        <div class="col">
+                            <h3 class="text-center index-landing-text-1">
+                                500
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <h3 class="text-center index-landing-text-2">
+                                GIFT BASKETS
+                            </h3>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-lg-6 col-12">
+            <!-- landing page image -->
+            <img class="text-center landing-image" src="{% static 'donation/img/woman-donate.jpg' %}"
+                 alt="woman holding a donation box">
+        </div>
+    </div>
+
+    <div class="row mt-lg-5 mt-3 pt-lg-5 pb-lg-3 pb-1">
+        <div class="col text-center mt-5">
+            <h2 id="anonymous" class="index-works">How It Works.</h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-3 col-12">
+
+        </div>
+
+        <div class="col-lg-6 col-12 text-center pt-lg-5 mb-5 pb-5 index-donation-box">
+            {% if user.is_authenticated %}
+                <h2 class="mb-5 index-donation-box-h-one">
+                    Donate To A Random Cause!
+                </h2>
+            {% else %}
+                <h2 class="mb-5 index-donation-box-h-two">
+                    Please login to Donate!
+                </h2>
+            {% endif %}
+
+
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="row mr-2 ml-3">
+                    <div class="col-lg-9 col-12 text-left index-form">
+                        {{ form|crispy }}
+                    </div>
+
+                    <div class="col-lg-3 col-12 pt-lg-4 index-image">
+                        <img class="mt-lg-3 coin-donation-2" src="{% static 'donation/img/coin-donation.jpg' %}"
+                             alt="coins in a donation jar">
+                    </div>
+
+                </div>
+
+                {% if user.is_authenticated %}
+                    <button class="btn donation-button donation-button-2 index-button-2 mt-4"
+                            type="submit">
+                            Donate
+                        </button>
+                {% else %}
+                    <button class="btn donation-button donation-button-2 index-button-2 mt-4 disabled"
+                           type="submit">
+                            Donate
+                        </button>
+                {% endif %}
+            </form>
+
+        </div>
+
+        <div class="col-lg-3 col-12">
+
+        </div>
+    </div>
+
+    <div class="row mb-5 mt-5">
+        <div class="col-12 text-center">
+            <p class="index-or">Or</p>
+        </div>
+    </div>
+</div>
+
+    <div class="container-fluid pb-5 pt-2" style="background: black;">
+        <div class="container" style="color: white;">
+            <div class="row d-flex justify-content-center pt-5 pb-5">
+        <div class="col-lg-3 text-center pt-3 mt-4 mb-4 index-steps">
+            <div class="index-steps-icon">
+                <img class="index-steps-icon-image" src="{% static 'donation/img/one.png' %}" alt="Icon image">
+            </div>
+            <div class="index-steps-title pt-2">Sign Up</div>
+            <div class="index-steps-text pt-2 pb-4">
+                Your first move should be to <a href="{% url 'register' %}" style="color: gold;">sign up</a>
+                to this donation site so, you can donate to any project, and help those in need.
+            </div>
+        </div>
+
+        <div class="col-lg-1"></div>
+
+        <div class="col-lg-3 text-center pt-3 mt-4 mb-4 index-steps">
+            <div class="index-steps-icon">
+                <img class="index-steps-icon-image" src="{% static 'donation/img/two.png' %}" alt="Icon image">
+            </div>
+            <div class="index-steps-title pt-2">Cause</div>
+            <div class="index-steps-text pt-2 pb-4">
+                In the second step, you can create a cause or select any cause to donate to. These are causes people
+                need help with.
+            </div>
+        </div>
+
+        <div class="col-lg-1"></div>
+
+        <div class="col-lg-3 text-center pt-3 mt-4 mb-4 index-steps">
+            <div class="index-steps-icon">
+                <img class="index-steps-icon-image" src="{% static 'donation/img/three.png' %}" alt="Icon image">
+            </div>
+            <div class="index-steps-title pt-2">Donate</div>
+            <div class="index-steps-text pt-2 pb-4">
+                On the <a href="{% url 'index' %}" style="color: gold;">homepage</a>,
+                you can donate to a random <a href="{% url 'cause' %}" style="color: gold;">cause</a>
+                or, you go to causes and pick a cause as in step 2 then, you donate.
+            </div>
+        </div>
+
+    </div>
+        </div>
+    </div>
+
+
+{% endblock %}

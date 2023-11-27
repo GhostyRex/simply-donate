@@ -1,0 +1,121 @@
+{# this is some other template that you want to display #}
+{% extends "donation/base/base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+
+<!-- If the user is already authenticated, redirect them to home -->
+{% if user.is_authenticated %}
+    <meta http-equiv="REFRESH" content="0;url=/">
+{% endif %}
+
+<div class="container-fluid register-container pt-5"
+     style="background: url({% static 'donation/img/sun-background.jpg' %}) no-repeat center center;">
+    <div class="row register-row">
+        <div class="col-lg-2 col-md-1 col-12">
+
+        </div>
+
+        <div class="col-lg-3 col-md-6 col-12 pl-lg-4 pr-lg-4 pt-3 mt-auto mb-auto mr-auto ml-auto">
+            {% if messages %}
+                <div class="account-alert alert alert-success alert-dismissible text-center wow fadeInDown"
+                         data-wow-delay="0.5s">
+                        <p style="color: black;"><strong>Success</strong></p>
+
+                        {% for message in messages %}
+                            <p style="color: black;">
+                                {{ message }}
+                            </p>
+                        {% endfor %}
+
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+            {% endif %}
+
+            <form method="POST" class="form-validate" enctype="multipart/form-data" autocomplete="off">
+                {% csrf_token %}
+
+                {{ form|crispy }}
+
+                <div id="div_id_show" class="form-check mb-3" style="font-family: Palatino Linotype;">
+                    <input type="checkbox" name="show" class="checkboxinput form-check-input bold" id="id_show">
+                    <label for="id_show" class="form-check-label">
+                    Show Password
+                    </label>
+                </div>
+
+                <div class="form-group text-center">
+                    <button class="btn btn-outline-success" type="submit">Log In</button>
+                </div>
+            </form>
+
+            <div class="pass-forget">
+                <p class="text-center" style="font-family: Goudy Old Style; font-size: 20px;">
+                    Forgot your password?
+                    <a href="{% url 'login' %}" style="color: green; font-weight: 600px; text-shadow: 0px 1px 1px; 0.3">
+                        Reset it!
+                    </a>
+                </p>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-4 col-12 pt-md-5 pb-3 mt-md-3 mb-5">
+            <div class="row d-flex justify-content-center mt-5">
+                <img class=" " style="height: 60%; width: 60%;"
+                     src="{% static 'donation/img/donation-box-sign-up.png' %}"
+                     alt="The number 1">
+            </div>
+
+            <div class="row d-flex justify-content-center">
+                <h2 class="pt-5 text-center" style="font-family: Goudy Old Style; font-weight: bold;
+                text-shadow: 0px 3px 6px rgba(0, 0, 0, 0.35);">WELCOME TO SIMPLY DONATE</h2>
+            </div>
+
+            <div class="row d-flex justify-content-center">
+                <p style="font-family: Palatino Linotype;">Don't Have an Account?
+                    <a href="{% url 'register' %}" style="color: green; font-weight: 800px; text-shadow: 0px 1px 1px;">Register!</a></p>
+            </div>
+        </div>
+
+        <div class="col-lg-2 col-md-1 col-12">
+
+        </div>
+
+    </div>
+</div>
+
+<script type="text/javascript">
+    // Toggle for showing passwords.
+        let show = document.getElementById('id_show');
+
+        show.addEventListener('click', showPasswordFunction);
+
+        // Function to toggle and show the password.
+        function showPasswordFunction(event) {
+          var x = document.getElementById("id_password");
+
+          if (x.type === "password") {
+            x.type = "text";
+          } else {
+            x.type = "password";
+          }
+        }
+
+        wow = new WOW({
+            boxClass: 'wow', // default
+            animateClass: 'animated', // default
+            offset: 0, // default
+            mobile: true, // default
+            live: true // default
+        })
+        wow.init();
+
+        // show the alert
+            setTimeout(function() {
+                $(".account-alert").alert('close').fade;
+            }, 7000);
+</script>
+
+{% endblock %}

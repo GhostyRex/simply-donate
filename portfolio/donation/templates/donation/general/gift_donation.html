@@ -1,0 +1,58 @@
+{% extends "donation/base/base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+<style>
+    input[type=file]::file-selector-button {
+  margin-right: 20px;
+  border: none;
+  background: #084cdf;
+  padding: 10px 20px;
+  border-radius: 10px;
+  color: #fff;
+  cursor: pointer;
+  transition: background .2s ease-in-out;
+}
+
+input[type=file]::file-selector-button:hover {
+  background-color: #81ecad;
+}
+</style>
+
+<link type="text/css" rel="stylesheet" href="{% static 'donation/css/gift_donation.css' %}">
+
+    <div class="container mt-5 mb-5">
+        <div class="row pt-5 mt-5 pb-5">
+            <div class="col-12 text-center">
+                <h2 class="gift-donation-cause-header">
+                    You are donating to {{ cause.title }}.
+                </h2>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3 col-12"></div>
+
+            <div class="col-md-6 col-12 px-4 mb-5" style="border-radius: 20px; box-shadow: #800080 0px 1px 1px 3px;">
+                <form class="pt-5" method="POST" enctype="multipart/form-data" style="font-weight: bold;">
+                    {% csrf_token %}
+
+                    {{ form|crispy }}
+
+
+                    <div class="row mt-5 pb-3">
+                        <div class="col-12 text-center">
+                            <button class="btn gift-donation-button" type="submit">
+                                Donate
+                            </button>
+
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+
+            <div class="col-md-3 col-12"></div>
+        </div>
+    </div>
+{% endblock %}

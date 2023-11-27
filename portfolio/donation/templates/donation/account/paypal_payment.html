@@ -1,0 +1,20 @@
+{% extends "donation/base/base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+    <!-- writes out the form tag automatically -->
+    <div class="row d-flex justify-content-center mt-5 pt-5">
+        <div class="text-center col-lg-5 col-12 pl-5 pr-5 pt-lg-5 pb-5 mt-lg-5 pt-3 mt-3 mb-lg-5 mr-auto ml-auto border"
+             style="background-color: white; border-radius: 20px; border: None;
+             box-shadow: 1px 3px 2px rgba(225,225,225, 0.4);">
+            <h1 class="mt-5 mb-5">Pay with Paypal</h1>
+
+            <p style="color: gray;"> Click the buy now button!</p>
+
+            {{ form.render }}
+
+        </div>
+    </div>
+
+{% endblock %}

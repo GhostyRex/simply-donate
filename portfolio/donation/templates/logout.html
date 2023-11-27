@@ -1,0 +1,28 @@
+{# this is some other template that you want to display #}
+{% extends "donation/base/base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+
+<section class="container-fluid center mt-5 pt-5" style="font-family: Goudy Old Style; font-weight: bold;">
+    <div class="row">
+        <div class="col-lg-3 col-md-3 col-sm-3">
+
+        </div>
+
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 border pt-5 pb-5 mt-3 mb-5 mr-auto ml-auto" style="border-radius: 20px;">
+            <h2 class="text-center">You have been logged out!</h2>
+            <div class="pt-3 text-center">
+                <p style="font-family: Roboto;">
+                    Already Have An Account? <a class="ml-2" href="{% url 'login' %}" style="color: gold;">Log in Again!</a>
+                </p>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-3 col-sm-3">
+
+        </div>
+    </div>
+</section>
+
+{% endblock %}

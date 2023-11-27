@@ -1,0 +1,11 @@
+.gift-donation-cause-header {
+    font-family: "OPT", sans-serif;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.gift-donation-button {
+    background-color: #800080;
+    color: white;
+    border-radius: 10px;
+}

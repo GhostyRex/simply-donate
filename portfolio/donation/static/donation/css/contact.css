@@ -1,0 +1,27 @@
+.contact-header {
+    background: #01BEFE;
+    font-weight: bold;
+    color: white;
+    font-family: "Poppins", sans-serif;
+}
+
+.contact-donate-image {
+    height: 250px;
+    width: 250px;
+}
+
+.contact-send-us-header {
+    font-size: 20px;
+    font-weight: bold;
+    font-family: "Poppins", sans-serif;
+}
+
+.contact-form-text {
+    font-family: "Poppins", sans-serif;
+}
+
+.character-count {
+    font-size: 13px;
+    font-weight: bold;
+}
+

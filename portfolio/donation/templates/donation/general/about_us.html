@@ -1,0 +1,156 @@
+{% extends "donation/base/base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="container-fluid mb-5 first-content">
+        <div class="row">
+            <div class="col-md-7 col-12 first-content-data">
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-7 col-12">
+                        <h2 class="first-content-header">Who We Are!</h2>
+                        <div class="first-content-text">
+                            We are a company with a vision of helping the world through donations. Anyone in
+                            need can come here, create a cause and, we make your cause public.
+                        </div>
+
+                        <div class="spacer mt-3"></div>
+
+                        <div class="first-content-text">
+                            We are a company with a vision of helping the world through donations. Anyone in
+                            need can come here, create a cause and, we make your cause public.
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row mt-5 mb-md-5 mb-sm-3">
+                    <div class="col-2"></div>
+                    <div class="col-10">
+                        <a href="{% url 'cause' %}" class="btn about-us-donation-button-1"
+                                    type="submit">
+                                    Donate
+                                </a>
+                        <img src="{% static 'donation/img/facebook-about-us.png' %}"
+                             class="about-us-header-icons">
+
+                        <img src="{% static 'donation/img/instagram-about-us.png' %}"
+                             class="about-us-header-icons">
+
+                        <img src="{% static 'donation/img/youtube.png' %}"
+                             class="about-us-header-icons">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-5 col-12 text-center">
+                <img src="{% static 'donation/img/woman-donate.jpg' %}"
+                     class="about-us-header-image">
+            </div>
+
+        </div>
+    </div>
+
+    <div class="spacer mt-md-5 pb-5 pt-md-5"></div>
+
+    <div class="container mb-3 pb-3">
+        <div class="row mt-md-5">
+            <div class="col-12 text-center mb-md-5">
+                <h2 class="first-content-header first-content-header-1">Our Core Values</h2>
+            </div>
+        </div>
+
+        <div class="row mt-5 core-values" >
+            <div class="col-md-4 col-12 text-center">
+                <div class="row">
+                    <div class="col-12">
+                        <img src="{% static 'donation/img/one.png' %}"
+                     class="core-values-image">
+                        <span class="core-values-header">Transparency</span>
+                    </div>
+                </div>
+
+                <div class="row mt-4">
+                    <div class="col-12 core-values-text">
+                        We are transparent about everything. Lorem Ipsum has been the industry's standard dummy text
+                        ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a
+                        type specimen book.
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-12 text-center">
+                <div class="row">
+                    <div class="col-12">
+                        <img src="{% static 'donation/img/two.png' %}"
+                     class="core-values-image">
+                        <span class="core-values-header">Dedication</span>
+
+                    </div>
+                </div>
+
+                <div class="row mt-4">
+                    <div class="col-12 core-values-text">
+                        We are dedicated about everything. Lorem Ipsum has been the industry's standard dummy text
+                        ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a
+                        type specimen book.
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-12 text-center">
+                <div class="row">
+                    <div class="col-12">
+                        <img src="{% static 'donation/img/three.png' %}"
+                     class="core-values-image">
+                        <span class="core-values-header">Cooperation</span>
+
+                    </div>
+                </div>
+
+                <div class="row mt-4">
+                    <div class="col-12 col-12 core-values-text">
+                        We are a cooperative society, building together to achieve a vision.
+                        Lorem Ipsum has been the industry's standard dummy text
+                        ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a
+                        type specimen book.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-12 text-center">
+                <a href="{% url 'cause' %}" class="btn about-us-donation-button-2 donation-button donation-button-2 mt-4"
+                            type="submit">
+                            Donate
+                        </a>
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-12 text-center mb-5">
+                <h2 class="change-text">Support Us. Be The Change!</h2>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="container mb-3 pb-3">
+        <div class="row mt-md-5">
+            <div class="col-12 text-center mb-md-5">
+                <h2 class="first-content-header first-content-header-1">Terms of Service</h2>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="container mb-3 pb-3">
+        <div class="row mt-md-5">
+            <div class="col-12 text-center mb-md-5">
+                <h2 class="first-content-header first-content-header-1">Privacy Policy</h2>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}

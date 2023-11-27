@@ -1,0 +1,229 @@
+{# this is some other template that you want to display #}
+{% extends "donation/base/base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+
+    <style>
+        .form-group{
+            font-weight: bold;
+        }
+    </style>
+
+<link type="text/css" rel="stylesheet" href="{% static 'donation/css/contact.css' %}">
+
+    {% if success == 'success' %}
+        <div class="account-alert alert alert-success alert-dismissible text-center wow fadeInDown" data-wow-delay="0.5s">
+            <strong>Message</strong> Successfully Sent to Affuadusa, Inc.
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    {% elif success == 'failure' %}
+        <div class="account-alert alert alert-danger alert-dismissible text-center wow fadeInDown" data-wow-delay="0.5s">
+            <strong>Message</strong> was not set to Affuadusa, Inc.
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    {% endif %}
+
+    <!-- Contact Us Form -->
+    <div class="container-fluid register-container">
+        <div class="row register-row mb-5 ">
+            <div class="col-md-12 pt-4 pb-5 mt-lg-5 mb-5 pl-lg-5 pr-lg-5 mr-auto ml-auto">
+                <form method="POST" class="form-validate" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form-container-initial pl-md-5 pr-md-5 mt-lg-5 mb-5" id="current-form">
+                        <div class="row">
+                            <div class="col-lg-2">
+
+                            </div>
+
+                            <div class="col-lg-4 col-md-6 pt-5 pb-5 pr-lg-5 pl-lg-5 contact-header">
+                                <h2 class="go-text-header text-center mb-3"
+                                    style="font-weight: bold;">
+                                    Let's get in touch
+                                </h2>
+
+                                <div class="row pt-4">
+                                    <div class="col-3 text-right">
+                                        <img class="contact-icon-img"
+                                             src="{% static 'donation/img/location.png' %}" alt="A Location Icon">
+                                    </div>
+
+                                    <div class="col">
+                                        <p class="contact-text">Address: <span>
+                                        Molyko Buea, Cameroon.</span></p>
+                                    </div>
+                                </div>
+
+                                <div class="row pt-3">
+                                    <div class="col-3 text-right">
+                                        <img class="contact-icon-img"
+                                             src="{% static 'donation/img/telephone.png' %}" alt="A Phone Icon">
+                                    </div>
+                                    <div class="col">
+                                        <p class="contact-text">Tel: <span>
+                                        + (237) 652195180.</span></p>
+                                    </div>
+                                </div>
+
+                                <div class="row pt-3">
+                                    <div class="col-3 text-right">
+                                        <img class="contact-icon-img"
+                                             src="{% static 'donation/img/linkedin-logo.png' %}" alt="A LinkedIn Icon">
+                                    </div>
+                                    <div class="col pt-1">
+                                        <p class="contact-text"><span>LinkedIn:</span>
+                                            <a style="color: white;"
+                                               href="https://www.linkedin.com/in/godlove-yufenyuy-nkwawir-44968b1a9/">
+                                                godloveyufenyuy
+                                            </a>
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="row pt-3">
+                                    <div class="col-3 text-right">
+                                        <img class="contact-icon-img"
+                                             src="{% static 'donation/img/email.png' %}" alt="An Email Icon">
+                                    </div>
+                                    <div class="col pt-1">
+                                        <p class="contact-text"><span>Email:</span>
+                                            <a style="color: white;"
+                                               href="mailto:godloveyufenyuy@gmail.com">godloveyufenyuy@gmail.com</a></p>
+                                    </div>
+                                </div>
+
+                                <div class="row pt-3">
+                                    <div class="col-3 text-right">
+                                        <img class="contact-icon-img"
+                                             src="{% static 'donation/img/website.png' %}" alt="A website Icon">
+                                    </div>
+                                    <div class="col pt-1">
+                                        <p class="contact-text"><span>Website:</span>
+                                            <a style="color: white;" href="{% url 'index' %}">simply-donate.com</a></p>
+                                    </div>
+                                </div>
+
+                                <!-- Put Logo Here -->
+                                <div class="logo-dive row">
+                                    <div class="col-12 text-center mt-auto mb-auto">
+                                        <img class="contact-donate-image"
+                                             src="{% static 'donation/img/simply-donate-contact-us.png' %}"
+                                             alt="donation logo">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-6 border pt-5 pb-3 pr-5 pl-5 contact-form-text" style="border-radius: 10px;">
+                                <h2 class="text-center mb-5 contact-send-us-header">
+                                    Send Us A Message
+                                </h2>
+
+                                <div class="form-row">
+                                    <div class="form-group mb-0 col">
+                                        {{ form.name|as_crispy_field }}
+                                    </div>
+
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group mb-0 col">
+                                        {{ form.email|as_crispy_field }}
+                                    </div>
+
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group mb-0 col">
+                                        {{ form.subject|as_crispy_field }}
+                                    </div>
+
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group mb-0 col">
+                                        {{ form.message|as_crispy_field }}
+                                    </div>
+
+                                </div>
+
+                                <div class="character-count text-right mt-0">
+                                    <span id="id_counter">1000/1000</span>
+                                    <span id="id_initial-counter" hidden>1000</span>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group col text-right mt-5 mb-0">
+                                        <button id="id_submit" class="btn btn-info" type="submit">Send</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-2">
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </form>
+
+                </div>
+            </div>
+    </div>
+
+    <script type="text/javascript">
+        // show the alert
+            setTimeout(function() {
+                $(".account-alert").alert('close').fade;
+            }, 15000);
+
+         const message = document.getElementById("id_message")
+
+         message.addEventListener('input', checkMessageLength);
+
+         let counter = document.getElementById("id_counter");
+
+         let initialCounter = document.getElementById("id_initial-counter");
+
+         function checkMessageLength(event) {
+            let messageValue = document.getElementById("id_message").value;
+
+            console.log(messageValue.length)
+            console.log(counter.innerText)
+
+            if (messageValue.length > 1000) {
+                // Get the submit button.
+                let submitButton = document.getElementById("id_submit");
+
+                // Disable the submit button.
+                submitButton.setAttribute('disabled', 'disabled')
+
+                // Change the color to red;
+                counter.style.color = "red";
+
+                // Any red should set counter displayed to 0/1000 instantly.
+                counter.innerText = `${0}/1000`
+
+            } else {
+                // Now we get the length of the message. Taking the length and subtracting from the number
+                // of words there. Don't forget it is converted to a string.
+                counter.innerText = `${parseInt(initialCounter.innerText) - parseInt(messageValue.length)}/1000`
+
+                // Get the submit button.
+                let submitButton = document.getElementById("id_submit");
+
+                // Enable the submit button.
+                submitButton.removeAttribute('disabled')
+
+                // Change the color to red;
+                counter.style.color = "black";
+            };
+         }
+
+    </script>
+{% endblock %}

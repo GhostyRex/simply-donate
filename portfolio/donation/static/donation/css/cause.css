@@ -1,0 +1,61 @@
+@font-face {
+    font-family: "Sylfaen";
+    src: url("./public/fonts/Sylfaen.woff2")
+    format("woff2");
+}
+
+.cause-container {
+    border-radius: 20px;
+    box-shadow: rgba(33, 35, 38, 0.1) 0px 3px 6px;
+    border: 0
+}
+
+.cause-img-one {
+    height: 550px;
+    width: 500px;
+    border-radius: 15px;
+}
+
+.cause-img-two {
+    width: 80px;
+    height: 80px;
+}
+
+.cause-title {
+    font-family: "OPT", sans-serif;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.cause-description {
+    font-family: "OPT", sans-serif;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.cause-description-text {
+    font-family: "Sylfaen", sans-serif;
+    font-size: 25px;
+}
+
+.cause-button-one {
+    font-family: "Gabriola", sans-serif;
+    font-size: 30px;
+    text-transform: capitalize;
+    border-radius: 19px;
+    box-shadow: #37D28A 0px 10px 10px -10px;
+    transition: all 0.3s ease 0s;
+    width: 55%;
+    border: none;
+}
+
+.cause-button-two {
+    font-family: "Gabriola", sans-serif;
+    font-size: 30px;
+    text-transform: capitalize;
+    border-radius: 19px;
+    box-shadow: #374CD2 0px 10px 10px -10px;
+    transition: all 0.3s ease 0s;
+    width: 55%;
+    border: none;
+}

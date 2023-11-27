@@ -1,0 +1,85 @@
+{% extends "donation/base/base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<script src="https://js.stripe.com/v3/"></script>
+<link rel="stylesheet" href="{% static 'donation/css/checkout.css' %}">
+
+<div class="row pt-5 pb-5">
+  <div class="col-12 d-flex justify-content-center">
+    <form id="payment-form" method="POST" class="mt-5 mb-5 stripe-form">
+      {% csrf_token %}
+      <div id="payment-element">
+        <!-- Elements will create form elements here -->
+      </div>
+
+      <button class="stripe-button" id="submit">Submit</button>
+      <div id="error-message">
+        <!-- Display error message to your customers here -->
+      </div>
+    </form>
+  </div>
+</div>
+
+
+<script type="text/javascript">
+    // Set your publishable key: remember to change this to your live publishable key in production
+  // See your keys here: https://dashboard.stripe.com/apikeys
+  const stripe = Stripe("{{ paymentSecret }}");
+
+  document.addEventListener('DOMContentLoaded', async() => {
+  // Get the csrftoken.
+  const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+
+    // Fetch the client_secret and initialize the elements.
+  const {clientSecret} = await fetch("{% url 'create_payment_intent' %}", {
+    method: "POST",
+    headers: {
+      'Content-Type': 'application/json',
+      'X-CSRFToken': csrftoken,
+    }
+  }).then(r => r.json())
+
+  const options = {
+    clientSecret: clientSecret,
+    // Fully customizable with appearance API.
+    appearance: {/*...*/},
+  };
+
+  // Set up Stripe.js and Elements to use in checkout form, passing the client secret obtained in step 3
+  const elements = stripe.elements(options);
+
+  // Create and mount the Payment Element
+  const paymentElement = elements.create('payment', {
+    layout: {
+      type: 'tabs',
+      defaultCollapsed: false,
+    }
+  });
+
+  paymentElement.mount('#payment-element');
+
+  const form = document.getElementById('payment-form');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const {error} = await stripe.confirmPayment({
+      elements,
+      confirmParams: {
+        return_url: window.location.href.split("?")[0] + "complete"
+      },
+    });
+
+    if (error) {
+      const messages = document.getElementById('error-message')
+      messages.innerText - error.message;
+    }
+
+  })
+
+  })
+ </script>
+
+{% endblock %}

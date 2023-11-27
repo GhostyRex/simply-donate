@@ -1,0 +1,860 @@
+/* Hide the body overflow x */
+.body{
+    overflow-x: hidden;
+}
+
+/* Set the width of the container class to 70% max. Use border to see how it is. */
+.container {
+   max-width: 80% !important;/*Set your own width %; */
+}
+
+/* FontFace */
+@font-face {
+    font-family: "Cooper";
+    src: url("./public/fonts/Cooper-ExtraBold.woff2")
+    format("woff2");
+}
+
+@font-face {
+    font-family: "Kristen ITC";
+    src: url("./public/fonts/Kristen ITC.woff2")
+    format("woff2");
+}
+
+@font-face {
+    font-family: "Goudy";
+    src: url("./public/fonts/OPTIwtcGoudy-Medium.ttf.woff")
+    format("woff");
+}
+
+@font-face {
+    font-family: "Maiandra GD";
+    src: url("./public/fonts/Maiandra GD.woff2")
+    format("woff2");
+}
+
+@font-face {
+    font-family: "Algerian";
+    src: url("./public/fonts/Algerian.woff2")
+    format("woff2");
+}
+
+@font-face {
+    font-family: "Highpro";
+    src: url("./public/fonts/Highpro.woff2")
+    format("woff2");
+}
+
+@font-face {
+    font-family: "Harrington";
+    src: url("./public/fonts/Harrington.woff2")
+    format("woff2");
+}
+
+@font-face {
+    font-family: "Agency FB";
+    src: url("./public/fonts/Agency FB.woff2")
+    format("woff2");
+}
+
+@font-face {
+    font-family: "Gabriola";
+    src: url("./public/fonts/Gabriola.woff2")
+    format("woff2");
+}
+
+@font-face {
+    font-family: "Showcard Gothic";
+    src: url("./public/fonts/Showcard Gothic.woff2")
+    format("woff2");
+}
+
+@font-face {
+    font-family: "Stencil";
+    src: url("./public/fonts/Stencil.woff2")
+    format("woff2");
+}
+
+@font-face {
+    font-family: "Haettenschweiler";
+    src: url("./public/fonts/Haettenschweiler.woff2")
+    format("woff2");
+}
+
+@font-face {
+    font-family: "Garamond";
+    src: url("./public/fonts/Garamond.woff2")
+    format("woff2");
+}
+
+@font-face {
+    font-family: "Gloucester MT";
+    src: url("./public/fonts/Gloucester MT Std Bold.woff2")
+    format("woff2");
+}
+
+/* OPTIDeligne-Bold.ttf.woff */
+@font-face {
+    font-family: "OPT";
+    src: url("./public/fonts/OPTIDeligne-Normal.ttf.woff")
+    format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Poor Richard";
+    src: url("./public/fonts/Poor Richard.woff2")
+    format("woff2");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Palatino Linotype";
+    src: url("./public/fonts/Palatino Linotype W02 Bold.woff2")
+    format("woff2");
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* End FontFace */
+
+/* Global checkbox styling */
+input[type='checkbox'] {
+    accent-color: #74992e;
+}
+
+.contact-icon-img{
+height: 30px;
+ width: 30px;
+}
+
+/*
+* ==========================================================
+*     Back to the top of page button starts
+* ==========================================================
+*/
+
+#myBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  background-color: #555;
+  color: white;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 30px;
+}
+/*
+* ==========================================================
+*     Back to the top of page button ends
+* ==========================================================
+*/
+
+/*
+* ==========================================================
+*     Main NAVBAR BEGINS.
+* ==========================================================
+*/
+
+.nav-link{
+    border-radius: 10px;
+    font-family: "Algerian", sans-serif;
+    font-size: 25px;
+    color: #060D09;
+}
+
+.nav-link:hover{
+    color: gold;
+}
+
+.navbar-icon{
+    color: gray;
+}
+
+/*
+.nav-link{
+    border-radius: 10px;
+    font-family: ""OPT", sans-serif";
+    font-size: 20px;
+    font-weight: bold;
+    color: #707070;
+    display: inline-block;
+  position: relative;
+}
+
+.nav-link::after{
+    content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: gold;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.nav-link:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+  color: gold;
+}
+*/
+
+/* Custom nav button's styling*/
+.navbar-nav li a.custom-nav-button-1{
+    font-size: 15px;
+    font-weight: bold;
+    font-family: "Highpro", sans-serif;
+    color: white;
+    background-color: #5FABFF;
+}
+
+.navbar-nav li a.custom-nav-button-2{
+    font-size: 15px;
+    font-weight: bold;
+    font-family: "Highpro", sans-serif;
+    color: white;
+    background-color: #7EE89B;
+}
+
+/* Remove the default box-shadow that is below the nav bar */
+.navbar{
+    box-shadow: none;
+}
+
+/* Start Moving Brackets styling */
+a.movingBrackets::before {
+/*   content: "[ "; */
+  margin: -0.1em 0px 0px -0.5em;
+  visibility: hidden;
+}
+
+a.movingBrackets::after {
+/*   content: " ]"; */
+  margin: -0.1em 0px 0px 0.1em;
+  visibility: hidden;
+}
+
+a.movingBrackets::before, a.movingBrackets::after {
+  -webkit-transition: all 0.4s ease;
+  -moz-transition: all 0.4s ease;
+  -o-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  position: absolute;
+}
+
+a.movingBrackets:hover::before  {
+    margin: -0.1em 0px 0px -1em;
+  color: #f5f5f5;
+  visibility: visible;
+}
+
+a.movingBrackets:hover::after  {
+  margin: -0.1em 0px 0px 0.5em;
+  color: #f5f5f5;
+  visibility: visible;
+}
+
+/* Custom Brackets */
+a.movingBrackets.square-brackets::before {
+  content: "[";
+}
+a.movingBrackets.square-brackets::after {
+  content: "]";
+}
+
+/* End Moving Brackets styling */
+/*
+* ==========================================================
+*     Main NAVBAR ENDS
+* ==========================================================
+*/
+
+/*
+* ==========================================================
+*     LANDING PAGE BEGINS
+* ==========================================================
+*/
+.donation-button:hover{
+    box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+    color: #fff;
+    transform: translateY(-7px);
+}
+
+.donation-button-1:hover {
+    background-color: #2EE59D;
+    box-shadow: none;
+
+}
+
+.donation-button-2:hover {
+    background-color: #374CD2;
+    box-shadow: none;
+
+}
+
+.gift-donation {
+    width: 234px; height: 156px; border-radius: 30px;
+}
+
+.coin-donation {
+    width: 173px; height: 174px;
+}
+
+.index-header {
+    font-family: "Harrington", sans-serif; font-size: 91px; text-shadow: 0px 3px 6px rgba(0, 0, 0, 0.49);
+}
+
+.index-slogan {
+    font-family: "Agency FB", sans-serif; font-size: 37px;
+}
+
+.index-button-1 {
+    font-family: "Gabriola", sans-serif; font-size: 40px; text-transform: capitalize; border-radius: 19px;
+                        box-shadow: 0px 3px 5px #37D28A; transition: all 0.3s ease 0s; height:75%; width: 35%;
+                         border: none;
+}
+
+.index-button-2 {
+    font-family: "Gabriola", sans-serif; font-size: 30px; text-transform: capitalize; border-radius: 19px;
+                            box-shadow: #374CD2 0px 10px 10px -10px; width: 30%; border: none;
+}
+
+.index-landing-text-1 {
+    font-family: "Showcard Gothic", sans-serif; font-size: 34px;
+}
+
+.index-landing-text-2 {
+    font-family: "Stencil", sans-serif; font-size: 30px;
+                            text-shadow: 0px 3px 6px rgba(55,210,138, 27%);
+}
+
+.landing-image {
+    width:110%; height: 100%;
+}
+
+.index-works {
+    font-family: "Haettenschweiler", sans-serif; color: black; font-size: 80px;
+}
+
+.coin-donation-2 {
+        width: 156px; height: 156px;
+    }
+
+@media only screen and (max-width: 1800px) {
+    .gift-donation {
+        width: 130px;
+        height: 110px;
+    }
+
+    .coin-donation {
+        width: 120px; height: 124px;
+    }
+
+    .index-works {
+        font-size: 50px;
+    }
+}
+
+@media only screen and (max-width: 1600px) {
+    .index-header {
+    font-size: 55px;
+    }
+
+    .index-slogan {
+        font-size: 25px;
+    }
+
+    .index-button-1 {
+        font-size: 25px;
+    }
+
+    .index-landing-text-1 {
+        font-size: 16px;
+    }
+
+    .index-landing-text-2 {
+        font-size: 18px;
+    }
+
+    .coin-donation-2 {
+        width: 80px; height: 85px;
+        margin-top: 90px; !important;
+    }
+
+    .index-button-2 {
+        font-size: 20px;
+    }
+}
+
+@media only screen and (max-width: 1300px) and (min-width: 930px) {
+    .coin-donation-2 {
+        visibility: hidden;
+    }
+}
+
+@media only screen and (max-width: 930px) {
+    .coin-donation-2 {
+        height: 250px;
+        width: 200px;
+        margin-top: 0px;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .index-button-1, .index-button-2 {
+        font-size: 20px;
+        width: 60%;
+    }
+
+    .gift-donation {
+        width: 90px;
+        height: 90px;
+    }
+
+    .coin-donation {
+        width: 90px; height: 94px;
+    }
+
+    .index-header {
+    font-size: 40px;
+    }
+
+    .index-slogan {
+        font-size: 20px;
+    }
+
+    .index-landing-text-1 {
+        font-size: 13px;
+    }
+
+    .index-landing-text-2 {
+        font-size: 14px;
+    }
+
+    .index-works {
+        font-size: 35px;
+}
+}
+
+
+/*
+* ==========================================================
+*     LANDING PAGE ENDS
+* ==========================================================
+*/
+
+/*
+* ==========================================================
+*     ABOUT US PAGE BEGINS
+* ==========================================================
+*/
+.first-content {
+    background: url('../../donation/img/about-us-background.jpg') no-repeat center center;
+    height: 100%;
+    width: 100%;
+}
+
+.first-content-data {
+    margin-top: 150px;
+}
+
+.first-content-header {
+    font-family: "Haettenschweiler", sans-serif;
+    color: white;
+    font-size: 121px;
+}
+
+.first-content-header-1 {
+    color: black;
+    font-size: 80px;
+}
+
+.first-content-text {
+    font-family: "OPT", sans-serif;
+    font-size: 25px;
+    font-weight: bold;
+    color: white;
+    padding-right: 20px;
+}
+
+.about-us-donation-button-1 {
+color: black;
+ background-color: white;
+  font-family: "Gabriola", sans-serif;
+   font-size: 35px;
+   text-transform: capitalize;
+    border-radius: 19px;
+    box-shadow: #FFFFFF 0px 10px 10px -10px; width: 30%; border: none;
+}
+
+.about-us-donation-button-2 {
+font-family: "Gabriola", sans-serif; font-size: 30px; text-transform: capitalize; border-radius: 19px;
+                            box-shadow: #374CD2 0px 10px 10px -10px; width: 15%; border: none;
+}
+
+.about-us-donation-button-2:hover, .about-us-donation-button-1:hover {
+ box-shadow: none;
+}
+
+.about-us-donation-button-1:hover {
+    transform: translateY(-7px);
+}
+
+.about-us-header-icons {
+    margin-left: 5px;
+    height: 58px;
+    width: 58px;
+}
+
+.about-us-header-image {
+    height: 100%;
+    width: 100%;
+    border-radius: 300px;
+}
+
+.core-values {
+font-family: "OPT", sans-serif; color: black; font-size: 40px;
+}
+.core-values-image {
+margin-left: 5px; height: 45px; width: 45px; margin-right: 10px;
+}
+
+.core-values-header {
+font-family: "Haettenschweiler", sans-serif;
+}
+
+.core-values-text {
+font-size: 18px; font-family: "OPT", sans-serif; color: black;
+}
+
+.change-text {
+font-family: "Gabriola", sans-serif; font-size: 40px; font-weight: bold; background: #4263CF;
+background: linear-gradient(to bottom right, #4263CF 0%, #78CF92 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+}
+
+/*Media*/
+@media only screen and (max-width: 1300px) {
+    .first-content{
+        background: url('../../donation/img/about-us-background-1.jpg') no-repeat center center;
+    }
+    .first-content-data {
+        margin-top: 90px;
+    }
+
+    .about-us-header-image {
+        margin-top: 140px;
+        height: 80%;
+        width: 80%;
+        border-radius: 300px;
+    }
+
+        .about-us-donation-button-1 {
+   font-size: 20px;
+    }
+
+}
+
+@media only screen and (max-width: 1100px) {
+    .about-us-header-image {
+        margin-top: 100px;
+        height: 80%;
+        width: 80%;
+    }
+
+    .first-content-header {
+        font-size: 95px;
+    }
+
+    .first-content-text {
+        font-size: 20px;
+    }
+
+    .about-us-donation-button-1 {
+   font-size: 18px;
+    }
+
+    .about-us-header-icons {
+    margin-left: 3px;
+    height: 30px;
+    width: 30px;
+    }
+
+    .core-values-header{
+        font-size: 30px;
+    }
+
+    .about-us-donation-button-2 {
+        width: 35%;
+        font-size: 30px;
+    }
+
+}
+
+@media only screen and (max-width: 830px) {
+    .first-content-header {
+        font-size: 50px;
+    }
+
+    .first-content-text, .core-values-text {
+        font-size: 15px;
+        padding-right: 0px;
+    }
+
+    .about-us-donation-button-1 {
+   font-size: 15px;
+    }
+
+    .about-us-header-icons {
+    margin-left: 3px;
+    height: 25px;
+    width: 25px;
+    }
+
+    .core-values-header{
+        font-size: 25px;
+    }
+
+    .core-values-image{
+    height: 30px;
+    width: 30px;
+    }
+
+    .about-us-header-icons {
+    margin-left: 3px;
+    height: 15px;
+    width: 15px;
+    }
+
+    .about-us-donation-button-2 {
+        width: 40%;
+        font-size: 20px;
+    }
+
+    .change-text {
+        font-size: 20px;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .first-content-header {
+        font-size: 60px;
+    }
+
+    .first-content-header-1 {
+        font-size: 50px;
+    }
+
+    .first-content-text, .core-values-text {
+        font-size: 15px;
+        padding-right: 0px;
+    }
+
+    .about-us-donation-button-1 {
+   font-size: 15px;
+   width: 50%;
+    }
+
+    .core-values-image{
+    height: 25px;
+    width: 25px;
+    }
+
+    .about-us-header-icons {
+    margin-left: 3px;
+    height: 15px;
+    width: 15px;
+    }
+
+    .about-us-donation-button-2 {
+        width: 70%;
+        font-size: 20px;
+    }
+
+    .change-text {
+        font-size: 20px;
+    }
+
+}
+
+
+/*
+* ==========================================================
+*     ABOUT US PAGE ENDS
+* ==========================================================
+*/
+
+/*
+* ==========================================================
+*     CAUSE CAROUSEL PAGE BEGINS
+* ==========================================================
+*/
+/*Carousel styling*/
+.myCarousel .list-inline{
+    white-space: nowrap;
+    overflow-x: auto;
+    }
+
+        .myCarousel .carousel-indicators{
+            position: static;
+    left: initial;
+    width: initial;
+    margin-left: initial;
+        }
+
+
+        .myCarousel .carousel-indicators > li{
+            width: initial;
+    height: initial;
+    text-indent: initial;
+        }
+
+
+        .myCarousel .carousel-indicators > li.active img{
+              opacity: 0.7;
+        }
+
+        /*End styling*/
+/*
+* ==========================================================
+*     CAUSE CAROUSEL ENDS
+* ==========================================================
+*/
+
+
+/*
+* ==========================================================
+*     REGISTER PAGE STARTS
+* ==========================================================
+*/
+
+
+.sign-up-button {
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;
+    }
+
+.sign-up-button:hover {
+     box-shadow: 0px 3px 3px rgba(46, 229, 157, 0.4);
+    color: #fff;
+    transform: translateY(-7px);
+    background-color: #7EE89B;
+    }
+
+/*
+* ==========================================================
+*    REGISTER PAGE ENDS
+* ==========================================================
+*/
+
+/*
+* ==========================================================
+*     FOOTER STARTS
+* ==========================================================
+*/
+
+.copyright a {
+    font-family: "Goudy", sans-serif;
+    font-size: 13px;
+    color: white;
+}
+
+.copyright a:hover{
+    color: limegreen;
+}
+
+.footer-container {
+    height: 100%; color: white; background-color: #000000; border-bottom: 2px double white;
+}
+
+.footer-header {
+    font-family: "Haettenschweiler", sans-serif; font-size: 100px;
+                                text-shadow: 0px 3px 6px rgba(255, 255, 255, 0.75);
+}
+
+
+.footer-header-1 {
+    font-family: "Gloucester MT", sans-serif; font-size: 25px;
+}
+
+.footer-border-bottom {
+    border-bottom: 2px solid white;
+}
+
+.footer-slogan {
+    font-family: "Haettenschweiler", sans-serif; font-size: 40px;
+                                text-shadow: 0px 3px 6px rgba(255, 255, 255, 0.36);
+}
+
+.footer-text {
+    color: white; font-family: "Garamond", sans-serif; font-size: 20px; font-weight: bold;
+}
+
+.footer-text:hover {
+    color: grey;
+}
+
+.footer-icons {
+    width: 40px;
+    height: 40px;
+    border: none;
+}
+
+.footer-icons:hover {
+    border: 2px solid white;
+}
+
+/*Media*/
+@media only screen and (max-width: 1700px) {
+    .footer-header {
+        font-size: 80px;
+    }
+
+
+    .footer-header-1 {
+        font-size: 20px;
+    }
+
+    .footer-border-bottom {
+        border-bottom: 2px solid white;
+    }
+
+    .footer-slogan {
+        font-size: 30px;
+    }
+
+    .footer-text {
+        font-size: 15px;
+    }
+
+    .footer-icons {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+.footer-socials {
+    list-style: none;
+}
+
+.footer-socials li {
+    display: inline-block;
+    margin-right: 5px;
+}
+
+/*
+* ==========================================================
+*     FOOTER ENDS
+* ==========================================================
+*/

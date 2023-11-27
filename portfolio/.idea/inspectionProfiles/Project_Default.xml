@@ -1,0 +1,45 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="PyPep8Inspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="ignoredErrors">
+        <list>
+          <option value="E722" />
+          <option value="E501" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyPep8NamingInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="ignoredErrors">
+        <list>
+          <option value="N806" />
+          <option value="N802" />
+          <option value="N813" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="affuadusa.models.Family.*" />
+          <option value="affuadusa.models.Member.*" />
+          <option value="affuadusa.models.Leader.*" />
+          <option value="affuadusa.models.Contribution.*" />
+          <option value="affuadusa.models.Penalty.*" />
+          <option value="affuadusa.models.Registration.*" />
+          <option value="affuadusa.models.AdminFee.*" />
+          <option value="affuadusa.models.Contact.*" />
+          <option value="affuadusa.models.Gallery.*" />
+          <option value="affuadusa.models.PaymentMethod.*" />
+          <option value="affuadusa.models.StripeBilling.*" />
+          <option value="affuadusa.models.TopUpTransaction.*" />
+          <option value="affuadusa.models.Announcement.*" />
+          <option value="affuadusa.models.Testimonial.*" />
+          <option value="affuadusa.models.PaypalBilling.*" />
+          <option value="affuadusa.models.Address.*" />
+          <option value="stripe.*" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>
